@@ -68,6 +68,12 @@
                                         <div t-if="o.partner_id.phone">Phone:
                                             <span t-field="o.partner_id.phone"/>
                                         </div>
+                                        <div t-if="o.partner_id.state_id.code">State Code:
+                                            <span t-field="o.partner_id.state_id.code"/>
+                                        </div>
+                                         <div t-if="o.partner_id.state_id.name">Place of Supply:
+                                            <span t-field="o.partner_id.state_id.name"/>
+                                        </div>
                                         <div t-if="o.partner_id.vat">GSTIN/PAN:
                                             <span t-field="o.partner_id.vat"/>
                                         </div>
@@ -93,6 +99,12 @@
                                         </div>
                                         <div t-if="o.partner_shipping_id.phone">Phone:
                                             <span t-field="o.partner_shipping_id.phone"/>
+                                        </div>
+                                        <div t-if="o.partner_shipping_id.state_id.code">State Code:
+                                            <span t-field="o.partner_shipping_id.state_id.code"/>
+                                        </div>
+                                        <div t-if="o.partner_shipping_id.state_id.name">Place of Supply:
+                                            <span t-field="o.partner_shipping_id.state_id.name"/>
                                         </div>
                                         <div t-if="o.partner_shipping_id.vat">GSTIN/PAN:
                                             <span t-field="o.partner_shipping_id.vat"/>
@@ -120,10 +132,10 @@
                                 </style>
                             <thead>
                                 <tr style="border-top:hidden; border-right:hidden; border-left:hidden;" >
-                                    <th  class="text-right" colspan="8" style="width:1015px" t-if="o.number"><strong>Invoice Number:<span t-field="o.number"/></strong></th>
+                                    <th  class="text-right" colspan="8" style="width:1015px;" t-if="o.number"><strong>Invoice Number:<span t-field="o.number"/></strong></th>
                                 </tr>
                                 <tr style="border-top:hidden; border-right:hidden; border-left:hidden;" >
-                                    <th  class="text-right" colspan="8" style="width:1015px" t-if="o.date_invoice"><strong>Invoice Date:<span t-field="o.date_invoice"/></strong></th>
+                                    <th  class="text-right" colspan="8" style="width:1015px;" t-if="o.date_invoice"><strong>Invoice Date:<span t-field="o.date_invoice"/></strong></th>
                                 </tr>
                                 <tr>
                                     <th class="text-center" style="width:5px; padding-bottom:2px; padding-left:2px; padding-right:2px; padding-top:2px;"><b>SL.No</b></th>
@@ -274,7 +286,7 @@
         <template id="report_tax_invoice_report">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                     <t t-set="list_of_copy" t-value="['Original for Buyer', 'Duplicate for Transporter', 'Triplicate for Supplier', 'Extra Copy-1', 'Extra Copy-2']"/>
+                     <t t-set="list_of_copy" t-value="['Original for Recipient', 'Duplicate for Transporter', 'Triplicate for Supplier', 'Extra Copy-1', 'Extra Copy-2']"/>
                          <t t-foreach="list_of_copy" t-as="copy_name">
                             <t t-call="oi_bp_tax_invoice_report.report_tax_invoice_report_doc" t-lang="doc.partner_id.lang"/>
                          </t>
