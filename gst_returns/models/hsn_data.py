@@ -9,7 +9,7 @@ class hsn_data(models.Model):
     gst_return_id = fields.Many2one('gstr.return', string='GST Return')
     gst_id = fields.Char(string='HSN')
     description = fields.Char(string='Description')
-    uom_id = fields.Many2one('product.uom', string='UOM')
+    uom_id = fields.Many2one('uom.uom', string='UOM')
     total_quantity = fields.Float(string='Total Quantity')
     total_value = fields.Float(string='Total Value')
     taxable_value = fields.Float(string='Taxable Value')

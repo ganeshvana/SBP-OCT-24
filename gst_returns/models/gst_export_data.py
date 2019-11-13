@@ -87,14 +87,18 @@ class Gstr_Return(models.Model):
  
         row_date_count += 1
         # write multiple invoices to sheet
+        date_xf = xlwt.easyxf(num_format_str='DD/MM/YYYY')
+        print ("ffffffffff",date_xf)
+
         for invoice in self.b2b_invoice_ids:
             
-            dates = datetime.strptime(invoice.invoice_date, "%Y-%m-%d")
-            dated = dates.strftime('%d %b %Y')
+            # dates = datetime.strptime(invoice.invoice_date, "%Y-%m-%d")
+            dated = str(invoice.invoice_date)
+            # dated = dates.strftime('%d %b %Y')
             
             sheet.write(row_date_count, 0, invoice.gstin_number, title_style_left)
             sheet.write(row_date_count, 1, invoice.invoice_id.number, title_style_left)
-            sheet.write(row_date_count, 2, dated, title_style_center)
+            sheet.write(row_date_count, 2, dated, date_xf)
             sheet.write(row_date_count, 3, invoice.invoice_value, title_style_right)
             sheet.write(row_date_count, 4, invoice.state_name, title_style_left)
             sheet.write(row_date_count, 5, invoice.reverse_charge, title_style_center)  # need_to_fill

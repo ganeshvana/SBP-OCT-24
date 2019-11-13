@@ -102,7 +102,7 @@ class Gstr_Return(models.Model):
     def get_gst_json(self):
         com_pos = str(self.company_id.state_id.l10n_in_tin)[:2]
 #         gstr = self.gst_return
-        start = self.start_date
+        start = str(self.start_date)
         datee = datetime.datetime.strptime(start, "%Y-%m-%d")
         fp = str(datee.month) + str(datee.year)
 
@@ -139,7 +139,7 @@ class Gstr_Return(models.Model):
                 pos = data.invoice_id.partner_id.state_id.l10n_in_tin
                 invo = {
                         "inum": data.invoice_id.number,
-                        "idt": data.invoice_date,
+                        "idt": str(data.invoice_date),
                         "val": data.invoice_value,
                         "pos": pos,
                         "rchrg": data.reverse_charge,
@@ -193,7 +193,7 @@ class Gstr_Return(models.Model):
                 pos = data.invoice_id.partner_id.state_id.l10n_in_tin
                 invo = {
                         "inum": data.invoice_id.number,
-                        "idt": data.invoice_date,
+                        "idt": str(data.invoice_date),
                         "val": data.invoice_value,
                         "etin": data.e_commerce_gstin,
                         "itms": []
@@ -250,7 +250,7 @@ class Gstr_Return(models.Model):
             if not invo:
                 invo = {
                         "inum": data.invoice_id.number,
-                        "idt": data.invoice_date,
+                        "idt": str(data.invoice_date),
                         "val": data.invoice_value,
                         "sbpcode": '',
                         "sbnum": '',
@@ -294,11 +294,11 @@ class Gstr_Return(models.Model):
                 invo = {
                         "ntty": data.document_type,
                         "nt_num": data.voucher_id.number,
-                        "nt_dt": data.voucher_id.date_invoice,
+                        "nt_dt": str(data.voucher_id.date_invoice),
                         "p_gst": data.pre_gst,
                         "rsn": data.reason,
                         "inum": data.invoice_number,
-                        "idt": data.invoice_date,
+                        "idt": str(data.invoice_date),
                         "val": data.voucher_value,
                         "itms": []
                         }
@@ -340,11 +340,11 @@ class Gstr_Return(models.Model):
                         "typ": data.ur_type,
                         "ntty": data.document_type,
                         "nt_num": data.voucher_id.number,
-                        "nt_dt": data.voucher_id.date_invoice,
+                        "nt_dt": str(data.voucher_id.date_invoice),
                         "p_gst": data.pre_gst,
                         "rsn": data.reason,
                         "inum": data.invoice_number,
-                        "idt": data.invoice_date,
+                        "idt": str(data.invoice_date),
                         "val": data.voucher_value,
                         "itms": []
                         }

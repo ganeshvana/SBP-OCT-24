@@ -41,6 +41,7 @@ GSTR1 Report
     'images': ['static/description/gst_logo.png'],
     "depends": [
         'account_invoice_gst',
+        'product'
     ],
     "data": [
         'security/ir.model.access.csv',

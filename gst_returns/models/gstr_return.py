@@ -139,7 +139,13 @@ class Gstr_Return(models.Model):
                     if not line.product_id.name == 'Down payment':
                         tax_rate = 0
                         for tax in line.invoice_line_tax_ids:
-                            tax_rate = tax_rate + tax.amount
+                            ##############################################
+                            if tax.children_tax_ids:
+                                for tax_line in tax.children_tax_ids:
+                                    tax_rate = tax_rate + tax_line.amount
+                            else:
+                                tax_rate = tax_rate + tax.amount
+                            ##############################################
                             price = (line.price_subtotal) + ((line.price_subtotal * tax_rate) / 100)
                         if tax_rate not in result:
                             result[tax_rate] = line.price_subtotal
@@ -452,7 +458,7 @@ class Gstr_Return(models.Model):
                 if invoice.origin:
                     inv = self.env['account.invoice'].search([('number', '=', invoice.origin)], limit=1)
                     
-                    if inv.date_invoice < '2017-07-01':
+                    if str(inv.date_invoice) < '2017-07-01':
                         pre_gst = 'Y'
                     else:
                         pre_gst = 'N'
@@ -495,7 +501,7 @@ class Gstr_Return(models.Model):
                 state_name = ''
             inv = self.env['account.invoice'].search([('number', '=', invoice.origin)], limit=1)
             
-            if invoice.date_invoice < '2017-07-01':
+            if str(invoice.date_invoice) < '2017-07-01':
                 pre_gst = 'Y'
             else:
                 pre_gst = 'N'
