@@ -69,11 +69,11 @@
                                             <span t-field="o.partner_id.phone"/>
                                         </div>
                                         <div t-if="o.partner_id.state_id.code">State Code:
-                                            <span t-field="o.partner_id.state_id.code"/>
+                                            <span t-field="o.partner_id.state_id.l10n_in_tin"/>
                                         </div>
-                                         <div t-if="o.partner_id.state_id.name">Place of Supply:
-                                            <span t-field="o.partner_id.state_id.name"/>
-                                        </div>
+<!--                                         <div t-if="o.partner_id.state_id.name">Place of Supply:-->
+<!--                                            <span t-field="o.partner_id.state_id.name"/>-->
+<!--                                        </div>-->
                                         <div t-if="o.partner_id.vat">GSTIN/PAN:
                                             <span t-field="o.partner_id.vat"/>
                                         </div>
@@ -101,11 +101,11 @@
                                             <span t-field="o.partner_shipping_id.phone"/>
                                         </div>
                                         <div t-if="o.partner_shipping_id.state_id.code">State Code:
-                                            <span t-field="o.partner_shipping_id.state_id.code"/>
+                                            <span t-field="o.partner_shipping_id.state_id.l10n_in_tin"/>
                                         </div>
-                                        <div t-if="o.partner_shipping_id.state_id.name">Place of Supply:
-                                            <span t-field="o.partner_shipping_id.state_id.name"/>
-                                        </div>
+<!--                                        <div t-if="o.partner_shipping_id.state_id.name">Place of Supply:-->
+<!--                                            <span t-field="o.partner_shipping_id.state_id.name"/>-->
+<!--                                        </div>-->
                                         <div t-if="o.partner_shipping_id.vat">GSTIN/PAN:
                                             <span t-field="o.partner_shipping_id.vat"/>
                                         </div>
@@ -224,7 +224,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="border-black o_total">
-                                                    <td style="border-left:hidden;">Insurance 0.04%</td>
+                                                    <td style="border-left:hidden;">ADD:Insurance 0.04%</td>
                                                     <td style="border-left:hidden; border-top:hidden; border-right:hidden; border-bottom:hidden;" class="text-right">
                                                         <span t-esc="'{0:,.2f}'.format(o.insurance_amount)"/>
                                                     </td>
