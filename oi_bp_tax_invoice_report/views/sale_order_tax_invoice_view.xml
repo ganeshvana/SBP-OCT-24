@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="paperformat_sbp_taxinvoice" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">35.00</field>
+            <field name="margin_bottom">20.00</field>
+            <field name="margin_left">7.00</field>
+            <field name="margin_right">7.00</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
         <report
                 id="action_report_tax_invoice"
                 string="Tax Invoice"
@@ -8,6 +24,7 @@
                 report_type="qweb-pdf"
                 file="oi_bp_tax_invoice_report.report_tax_invoice_report"
                 name="oi_bp_tax_invoice_report.report_tax_invoice_report"
+                paperformat="oi_bp_tax_invoice_report.paperformat_sbp_taxinvoice"
         />
     </data>
 </odoo>
